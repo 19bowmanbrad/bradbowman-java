@@ -1,5 +1,6 @@
 public class rocketShip {
     public static void main(String[] args) {
+        topSectionHalfOne();
         topMidSection();
         bottomMidSection();
     }
@@ -30,73 +31,45 @@ public class rocketShip {
     }
 
     public static void bottomMidSection() {
-        for (int i = 0; i < 3; i--) {
-            for (int j = 2; j > i; j++) {
+        for (int i = 0; i < 3; i++) {
+            for (int k = 0; k < i; k++) {
                 System.out.print(".");
             }
-            for (int k = -1; k < i; k--) {
-                System.out.print("/\\");
+            for (int j = 3; j > i; j--) {
+                System.out.print("\\/");
             }
-            for (int j = 2; j > i; j++) {
+            for (int k = 0; k < i; k++) {
                 System.out.print(".");
             }
-            for (int j = 2; j > i; j++) {
+            for (int k = 0; k < i; k++) {
                 System.out.print(".");
             }
-            for (int k = -1; k < i; k--) {
-                System.out.print("/\\");
+            for (int j = 3; j > i; j--) {
+                System.out.print("\\/");
             }
-            for (int j = 2; j > i; j++) {
+            for (int k = 0; k < i; k++) {
                 System.out.print(".");
             }
             System.out.println();
-
-
-
-
-
-
-
-
-
-
-
-
-            /*for (int j = 6; j > i; j--) {
-                System.out.print("\\/");
+        }
+    }
+    public static void topSectionHalfOne(){
+        for (int i = 0; i < 5; i++){
+            for (int k = i; k < 4; k++){
+                System.out.print(" ");
             }
+            for (int j = -1; j < i; j++){
+                System.out.print("/");
+            }
+            System.out.print("**");
+            for (int j = -1; j < i; j++){
+                System.out.print("\\");
+            }
+            for (int k = i; k < 4; k++){
+                System.out.print(" ");
+            }
+
             System.out.println();
-            for (int k = 1; k > i; k--){
-                System.out.print(".");
-            }
-            for (int j = 2; j > i; j--){
-                System.out.print("\\/");
-            }
-            for (int k = 2; k > i; k--) {
-                System.out.print(".");
-            }
-            for (int j = 2; j > i; j--){
-                System.out.print("\\/");
-            }
-            for (int k = 1; k > i; k--) {
-                System.out.print(".");
-            }
-            System.out.println();
-            for (int k = 2; k > i; k--) {
-                System.out.print(".");
-            }
-            for (int j = 1; j > i; j--){
-                System.out.print("\\/");
-            }
-            for (int k = 4; k > i; k--) {
-                System.out.print(".");
-            }
-            for (int j = 1; j > i; j--){
-                System.out.print("\\/");
-            }
-            for (int k = 2; k > i; k--) {
-                System.out.print(".");
-            }*/
         }
     }
 }
