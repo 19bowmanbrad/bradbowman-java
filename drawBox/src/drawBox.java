@@ -1,7 +1,8 @@
 public class drawBox {
     public static void main(String []args) {
-        drawBox(4,4,'-');
+        drawBox(4,4,'$');
         drawBox(5, 8, '*');
+        drawBox(2, 10, '#');
     }
     public static void drawBox(int width, int height, char character){
         for (int i = 0; i < height; i++){
