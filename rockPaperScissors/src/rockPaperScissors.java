@@ -25,17 +25,17 @@ public class rockPaperScissors {
         System.out.println(myChoice);
     }
     public static String rockPaperScissorsNums(int choice, String name) {
+        final String userChoice = "";
         if (choice == 0) {
-            return (name + "chose rock!");
+            return  (name + "chose rock!");
         } else if (choice == 1) {
-            return (name + " chose paper!");
+             return  (name + " chose paper!");
         } else if (choice == 2) {
             return (name + " chose scissors!");
         } else {
             choice =choiceInputRepat(name);
-            rockPaperScissorsNums(choice, name);
+            return (rockPaperScissorsNums(choice, name));
         }
-        return"Game on!";
     }
     public static int choiceInputRepat(String name) {
         Scanner userInput = new Scanner(System.in);
