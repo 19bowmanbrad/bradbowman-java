@@ -21,6 +21,7 @@ public class rockPaperScissors {
         }
         int userWins = 0;
         int compWins = 0;
+        int ties = 0;
         int userGameWins = 0;
         int compGameWins = 0;
         for (int i = 1; i <= numGames; i++) {
@@ -44,19 +45,23 @@ public class rockPaperScissors {
             } else if (userChoice == compNum){
                 System.out.println("Tie!");
                 i -= 1;
+                ties += 1;
             }
-            System.out.println("Score: " + userName + " = " + userWins + " Computer = " + compWins);
+            System.out.println("Score: " + userName + " = " + userWins + " Computer = " + compWins +". Ties - " + ties);
         }
         if (userWins > compWins){
             System.out.println(userName + " wins the game " + userWins + " to " + compWins + "!");
+            userGameWins += 1;
         } else if (compWins > userWins){
             System.out.println("Computer wins the game " + compWins + " to " + userWins + "!");
+            compGameWins += 1;
         }
         System.out.println();
         System.out.println("Would you like to play again? -y -n");
         String yesNo = userInput.next();
         userWins = 0;
         compWins = 0;
+        ties = 0;
         while (yesNo.equals("y")){
             System.out.println("How many games would you like to play? -3 or -5");
             numGames = userInput.nextInt();
@@ -90,9 +95,10 @@ public class rockPaperScissors {
                     compWins += 1;
                 } else if (userChoice == compNum){
                     System.out.println("Tie!");
+                    ties += 1;
                     i -= 1;
                 }
-                System.out.println("Score: " + userName + " = " + userWins + " Computer = " + compWins);
+                System.out.println("Score: " + userName + " = " + userWins + " Computer = " + compWins + ". Ties - " + ties);
             }
             if (userWins > compWins){
                 System.out.println(userName + " wins the game " + userWins + " to " + compWins + "!");
@@ -104,7 +110,7 @@ public class rockPaperScissors {
             System.out.println("Would you like to play again? -y -n");
             yesNo = userInput.next();
         }
-        System.out.println("Thanks for playing!");
+        System.out.println("Thanks for playing! User game wins: " + userGameWins + ". Computer game wins: " + compGameWins + ".");
     }
 
     public static String rockPaperScissorsNums(int choice, String name) {
@@ -126,6 +132,7 @@ public class rockPaperScissors {
     public static String winLose(int user, int computer, String userName, int numGames) {
         int userWins = 0;
         int compWins = 0;
+        int ties = 0;
         if (((user == 0) && (computer == 2)) || ((user == 1) && (computer == 0)) || ((user == 2) && (computer == 1))) {
             System.out.println(userName + " wins the round!");
             userWins += 1;
@@ -134,12 +141,13 @@ public class rockPaperScissors {
             compWins += 1;
         } else if (user == computer){
             System.out.println("Tie!");
+            ties += 1;
         }
         if (userWins == numGames) {
             System.out.println(userName + " wins the game " + userWins + " to " + compWins + "!");
         } else if (compWins == numGames) {
             System.out.println("Computer wins the game " + compWins + " to " + userWins + "!");
         }
-        return ("Score: User -" + userWins + " Computer -" + compWins);
+        return ("Score: User -" + userWins + " Computer -" + compWins + ". Ties - " + ties);
     }
 }
