@@ -54,9 +54,9 @@ public class workSheetFourOne {
         //3g
         System.out.println((even[278]) + " " + even[456]);
         //3h
-        int[] odd = new int [4];
+        int[] odd = new int [5];
         count = 0;
-        for (int i = -4; i < 5; i ++){
+        for (int i = -4; i < 6; i ++){
             if (i % 2 != 0){
                 odd[count] = i;
             } else {
@@ -85,7 +85,7 @@ public class workSheetFourOne {
     public static int[] storeOdd(int min, int max){
         int [] x = new int[(Math.abs(min) + Math.abs(max)) / 2];
         int count = 0;
-        for (int i = min; i < max; i ++){
+        for (int i = min; i < (max); i ++){
             if (i % 2 != 0) {
                 x[count] = i;
             } else {
