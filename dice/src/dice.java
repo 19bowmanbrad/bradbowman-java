@@ -1,24 +1,24 @@
-import java.util.Scanner;
-import java.util.Random;
+import java.util.*;
 public class dice {
     public static final int DICENUM = 1;
     public static void main(String[] args){
-        String dice[][] = new String [6][5];
+        String gameDice[][] = new String [6][5];
         Scanner userInput = new Scanner(System.in);
         System.out.println("Would you like to play a game? -y -n");
         String yesNo = userInput.next();
+        int roll = rollDice();
+        gameDice = defDice(roll, gameDice);
+
         while(yesNo.equals("y")){
-            String gameDice[][] = new String [DICENUM][5];
-            defDice(1, dice);
-            printDice();
-            rollDice();
+            gameDice = defDice(roll, gameDice);
+            printDice(gameDice);
+            roll = rollDice();
             drawLine();
             System.out.println("Keep playing? -y -n");
             yesNo = userInput.next();
         }
     }
-    public static String[] defDice(int roll, String [][] dice) {
-        System.out.println("defdice");
+    public static String[][] defDice(int roll, String [][] dice) {
         String topBottom =  " ------- ";
         String blank =      "|       |";
         String oneStar =    "|   *   |";
@@ -48,20 +48,28 @@ public class dice {
             dice[i][1] = twoStar;
             dice[i][2] = oneStar;
             dice[i][3] = twoStar;
+        } else if (roll == 5){
+            dice[i][1] = twoStar;
+            dice[i][2] = twoStar;
+            dice[i][3] = twoStar;
         }
+        return dice;
 
     }
-    public static String[] printDice() {
-        System.out.println("printDice");
-        String [] blank = {};
-        return blank;
+    public static void printDice(String [][] dice) {
+        for (int i = 0; i < dice.length - 1; i++){
+            System.out.println(dice[DICENUM - 1][i]);
+        }
     }
     public static int rollDice(){
-        System.out.println("rollDice");
-        return(0);
+        Random rand = new Random();
+        int roll = rand.nextInt(6);
+        return(roll);
     }
     public static void drawLine(){
-        System.out.println("drawLine");
+        for (int i = 0; i < 20; i ++){
+            System.out.print("_");
+        }
     }
 
 }

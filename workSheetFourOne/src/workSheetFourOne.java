@@ -53,6 +53,20 @@ public class workSheetFourOne {
         System.out.println((even[100]));
         //3g
         System.out.println((even[278]) + " " + even[456]);
+        //3h
+        int[] odd = new int [5];
+        count = 0;
+        for (int i = -4; i < 6; i ++){
+            if (i % 2 != 0){
+                odd[count] = i;
+            } else {
+                count --;
+            }
+            count ++;
+        }
+        System.out.println(Arrays.toString(odd));
+        int[] oddArray = storeOdd(-10, 5);
+        System.out.println(Arrays.toString(oddArray));
     }
     //3b
     public static int[] makeMiddle(int[] nums){
@@ -66,5 +80,19 @@ public class workSheetFourOne {
             a[0] = nums[nums.length/2];
         }
         return a;
+    }
+    //3i
+    public static int[] storeOdd(int min, int max){
+        int [] x = new int[(Math.abs(min) + Math.abs(max)) / 2];
+        int count = 0;
+        for (int i = min; i < (max); i ++){
+            if (i % 2 != 0) {
+                x[count] = i;
+            } else {
+                count --;
+            }
+            count ++;
+        }
+        return x;
     }
 }
