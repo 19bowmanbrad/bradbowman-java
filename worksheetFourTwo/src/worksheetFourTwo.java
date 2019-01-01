@@ -19,7 +19,7 @@ public class worksheetFourTwo {
         //1e
         int [] array2 = {10, -2, 4, -4, 9, -5, 19, -7, 39, -1};
         double avgNum = average(array2);
-        System.out.println(avgNum);
+        System.out.println("The average is "+ avgNum);
         //2a
         int[] doubleArray = doubleValues(array1);
         System.out.println(Arrays.toString(doubleArray));
