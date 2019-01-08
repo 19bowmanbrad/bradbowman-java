@@ -21,6 +21,18 @@ public class fracCalc {
             parseWhole("");
             parseNume("");
             parseDenom("");
+            ArrayList<String> equation = new ArrayList<>();
+            System.out.println("Enter an equation");
+            String userEquation = userInput.next();
+            Character testChar;
+            for (int i = 0; i < userEquation.length(); i ++){
+                testChar = userEquation.charAt(i);
+                if (testChar.equals(" ")){
+                    System.out.println(userEquation.substring(0, i));
+                    equation.add(userEquation.substring(0, i));
+                }
+            }
+            System.out.println(equation);
             System.out.println("Would you like to continue using the calculator? -y -n");
             yesNo = userInput.next();
         }
