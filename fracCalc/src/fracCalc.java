@@ -16,10 +16,10 @@ public class fracCalc {
         System.out.println("Would you like to use the calculator? -y -n");
         String yesNo = userInput.next();
         while (yesNo.equals("y")){
-            add(1,2,3,4);
-            subtract(1,2,3,4);
-            multiply(1,2,3,4);
-            divide(1,2,3,4);
+//            add(1,2,3,4);
+//            subtract(1,2,3,4);
+//            multiply(1,2,3,4);
+//            divide(1,2,3,4);
             parseWhole("");
             parseNume("");
             parseDenom("");
@@ -50,36 +50,82 @@ public class fracCalc {
             int denomNum2 = parseDenom(fracTwo);
             System.out.println(denomNum2);
 
-//            for (int i = 0; i < userEquation.length(); i ++) {
-//                testChar = userEquation.charAt(i);
-//                System.out.println(testChar);
-//                if (testChar.equals(" ")) {
-//                    fracOne = (userEquation.substring(0, i));
-//                    i++;
-//                }
-//            }
+            if (sign.equals("+")){
+                String addFracs = add(wholeNum, numeNum, denomNum, wholeNum2, numeNum2, denomNum2);
+                System.out.println(fracOne + " " + sign + " " + fracTwo + " = " + addFracs);
+            } else if (sign.equals("-")){
+                String subtractFracs = subtract(wholeNum, numeNum, denomNum, wholeNum2, numeNum2, denomNum2);
+                System.out.println(fracOne + " " + sign + " " + fracTwo + " = " + subtractFracs);
+            } else if (sign.equals("*")){
+                String multiplyFracs = subtract(wholeNum, numeNum, denomNum, wholeNum2, numeNum2, denomNum2);
+                System.out.println(fracOne + " " + sign + " " + fracTwo + " = " + multiplyFracs);
+            } else if (sign.equals("/")){
+
+            } else {
+                System.out.println("ERROR: SIGN NOT RECOGNIZED");
+            }
+
+
+
             System.out.println("Would you like to continue using the calculator? -y -n");
             yesNo = userInput.next();
 
         }
 
     }
-    public static String add(final int firstNume, final int firstDenom, final int secondNume, final int secondDenom) {
+    public static String add(int firstWhole, int firstNume, int firstDenom, int secondWhole, int secondNume, int secondDenom) {
         System.out.println("add");
-        return "";
+        if (firstWhole != 0){
+            firstNume = ((firstWhole * firstDenom) + firstNume);
+        }
+        if (secondWhole != 0){
+            secondNume = ((secondWhole * secondDenom) + secondNume);
+        }
+        int finalNume = ((firstNume * secondDenom) + (firstDenom * secondNume));
+        int finalDenom = (firstDenom * secondDenom);
+        if (finalNume % finalDenom == 0){
+            return (Integer.toString(finalNume / finalDenom));
+        } else {
+            return (finalNume + "/" + finalDenom);
+        }
+
     }
-    public static String subtract(final int firstNume, final int firstDenom, final int secondNume, final int secondDenom) {
+    public static String subtract(int firstWhole, int firstNume, int firstDenom, int secondWhole, int secondNume, int secondDenom) {
         System.out.println("subtract");
-        return "";
+        if (firstWhole != 0){
+            firstNume = ((firstWhole * firstDenom) + firstNume);
+        }
+        if (secondWhole != 0){
+            secondNume = ((secondWhole * secondDenom) + secondNume);
+        }
+        int finalNume = ((firstNume * secondDenom) - (firstDenom * secondNume));
+        int finalDenom = (firstDenom * secondDenom);
+        if (finalNume % finalDenom == 0){
+            return (Integer.toString(finalNume / finalDenom));
+        } else {
+            return (finalNume + "/" + finalDenom);
+        }
     }
 
-    public static String multiply(final int firstNume, final int firstDenom, final int secondNume, final int secondDenom) {
+    public static String multiply(int firstWhole, int firstNume, int firstDenom, int secondWhole, int secondNume, int secondDenom) {
         System.out.println("multiply");
+        if (firstWhole != 0){
+            firstNume = ((firstWhole * firstDenom) + firstNume);
+        }
+        if (secondWhole != 0){
+            secondNume = ((secondWhole * secondDenom) + secondNume);
+        }
         return "";
     }
 
-    public static String divide(final int firstNume, final int firstDenom, final int secondNume, final int secondDenom) {
+    public static String divide(int firstWhole, int firstNume, int firstDenom, int secondWhole, int secondNume, int secondDenom) {
         System.out.println("divide");
+        if (firstWhole != 0){
+            firstNume = ((firstWhole * firstDenom) + firstNume);
+        }
+        if (secondWhole != 0){
+            secondNume = ((secondWhole * secondDenom) + secondNume);
+        }
         return "";
     }
 
