@@ -16,39 +16,44 @@ public class fracCalc {
         System.out.println("Would you like to use the calculator? -y -n");
         String yesNo = userInput.next();
         while (yesNo.equals("y")){
-//            add(1,2,3,4);
-//            subtract(1,2,3,4);
-//            multiply(1,2,3,4);
-//            divide(1,2,3,4);
-            parseWhole("");
-            parseNume("");
-            parseDenom("");
+
             System.out.println("Enter an equation");
+
             String userEquation;
             userEquation = mathStuff.nextLine();
-            Character testChar;
-            String fracOne = "";
-            String sign = "";
-            String fracTwo = "";
+
+            String fracOne;
+
+            String sign;
+
+            String fracTwo;
+
             String[] splitArray = userEquation.split(" ");
+
             fracOne = splitArray[0];
             sign = splitArray[1];
             fracTwo = splitArray[2];
-            System.out.println(fracOne);
-            System.out.println(sign);
-            System.out.println(fracTwo);
+//            System.out.println(fracOne);
+//            System.out.println(sign);
+//            System.out.println(fracTwo);
+
             int wholeNum = parseWhole(fracOne);
-            System.out.println(wholeNum);
+//            System.out.println(wholeNum);
+
             int numeNum = parseNume(fracOne);
-            System.out.println(numeNum);
+//            System.out.println(numeNum);
+
             int denomNum = parseDenom(fracOne);
-            System.out.println(denomNum);
+//            System.out.println(denomNum);
+
             int wholeNum2 = parseWhole(fracTwo);
-            System.out.println(wholeNum2);
+//            System.out.println(wholeNum2);
+
             int numeNum2 = parseNume(fracTwo);
-            System.out.println(numeNum2);
+//            System.out.println(numeNum2);
+
             int denomNum2 = parseDenom(fracTwo);
-            System.out.println(denomNum2);
+//            System.out.println(denomNum2);
 
             if (sign.equals("+")){
                 String addFracs = add(wholeNum, numeNum, denomNum, wholeNum2, numeNum2, denomNum2);
@@ -57,10 +62,11 @@ public class fracCalc {
                 String subtractFracs = subtract(wholeNum, numeNum, denomNum, wholeNum2, numeNum2, denomNum2);
                 System.out.println(fracOne + " " + sign + " " + fracTwo + " = " + subtractFracs);
             } else if (sign.equals("*")){
-                String multiplyFracs = subtract(wholeNum, numeNum, denomNum, wholeNum2, numeNum2, denomNum2);
+                String multiplyFracs = multiply(wholeNum, numeNum, denomNum, wholeNum2, numeNum2, denomNum2);
                 System.out.println(fracOne + " " + sign + " " + fracTwo + " = " + multiplyFracs);
             } else if (sign.equals("/")){
-
+                String divideFracs = divide(wholeNum, numeNum, denomNum, wholeNum2, numeNum2, denomNum2);
+                System.out.println(fracOne + " " + sign + " " + fracTwo + " = " + divideFracs);
             } else {
                 System.out.println("ERROR: SIGN NOT RECOGNIZED");
             }
@@ -74,7 +80,7 @@ public class fracCalc {
 
     }
     public static String add(int firstWhole, int firstNume, int firstDenom, int secondWhole, int secondNume, int secondDenom) {
-        System.out.println("add");
+//        System.out.println("add");
         if (firstWhole != 0){
             firstNume = ((firstWhole * firstDenom) + firstNume);
         }
@@ -91,7 +97,7 @@ public class fracCalc {
 
     }
     public static String subtract(int firstWhole, int firstNume, int firstDenom, int secondWhole, int secondNume, int secondDenom) {
-        System.out.println("subtract");
+//        System.out.println("subtract");
         if (firstWhole != 0){
             firstNume = ((firstWhole * firstDenom) + firstNume);
         }
@@ -108,29 +114,41 @@ public class fracCalc {
     }
 
     public static String multiply(int firstWhole, int firstNume, int firstDenom, int secondWhole, int secondNume, int secondDenom) {
-        System.out.println("multiply");
+//        System.out.println("multiply");
         if (firstWhole != 0){
             firstNume = ((firstWhole * firstDenom) + firstNume);
         }
         if (secondWhole != 0){
             secondNume = ((secondWhole * secondDenom) + secondNume);
         }
-        return "";
+        int finalNume = (firstNume * secondNume);
+        int finalDenom = (firstDenom * secondDenom);
+        if (finalNume % finalDenom == 0){
+            return (Integer.toString(finalNume / finalDenom));
+        } else {
+            return (finalNume + "/" + finalDenom);
+        }
     }
 
     public static String divide(int firstWhole, int firstNume, int firstDenom, int secondWhole, int secondNume, int secondDenom) {
-        System.out.println("divide");
+//        System.out.println("divide");
         if (firstWhole != 0){
             firstNume = ((firstWhole * firstDenom) + firstNume);
         }
         if (secondWhole != 0){
             secondNume = ((secondWhole * secondDenom) + secondNume);
         }
-        return "";
+        int finalNume = (firstNume * secondDenom);
+        int finalDenom = (firstDenom * secondNume);
+        if (finalNume % finalDenom == 0){
+            return (Integer.toString(finalNume / finalDenom));
+        } else {
+            return (finalNume + "/" + finalDenom);
+        }
     }
 
     public static int parseWhole(final String fraction) {
-        System.out.println("parseWhole");
+//        System.out.println("parseWhole");
         int wholeNum = 0;
         Character testChar;
         for (int i = 0; i < fraction.length(); i++){
@@ -143,7 +161,7 @@ public class fracCalc {
     }
 
     public static int parseNume(final String fraction) {
-        System.out.println("parseNume");
+//        System.out.println("parseNume");
         int numeNum = 0;
         Character testChar;
         for (int i = 0; i < fraction.length(); i++){
@@ -165,7 +183,7 @@ public class fracCalc {
     }
 
     public static int parseDenom(final String fraction) {
-        System.out.println("parseDenom");
+//        System.out.println("parseDenom");
         int denomNum = 1;
         Character testChar;
         for (int i = 0; i < fraction.length(); i++){
