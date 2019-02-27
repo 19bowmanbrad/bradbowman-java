@@ -7,7 +7,7 @@
  * fracCalc
  *****************************************************
  */
-import javax.swing.*;
+
 import java.util.*;
 public class fracCalc {
     public static void main(String[] args) {
@@ -19,8 +19,7 @@ public class fracCalc {
 
             System.out.println("Enter an equation");
 
-            String userEquation;
-            userEquation = mathStuff.nextLine();
+            String userEquation = mathStuff.nextLine();
 
             String fracOne;
 
@@ -33,27 +32,32 @@ public class fracCalc {
             fracOne = splitArray[0];
             sign = splitArray[1];
             fracTwo = splitArray[2];
-//            System.out.println(fracOne);
-//            System.out.println(sign);
-//            System.out.println(fracTwo);
 
-            int wholeNum = parseWhole(fracOne);
-//            System.out.println(wholeNum);
 
-            int numeNum = parseNume(fracOne);
-//            System.out.println(numeNum);
+            int wholeNum = 0;
+            int numeNum = 1;
+            int denomNum = 1;
 
-            int denomNum = parseDenom(fracOne);
-//            System.out.println(denomNum);
+            int wholeNum2 = 0;
+            int numeNum2 = 1;
+            int denomNum2 = 1;
 
-            int wholeNum2 = parseWhole(fracTwo);
-//            System.out.println(wholeNum2);
+            if (fracOne.contains("/")){
+                    wholeNum = parseWhole(fracOne);
+                    numeNum = parseNume(fracOne);
+                    denomNum = parseDenom(fracOne);
+            } else {
+                    numeNum = Integer.parseInt(fracOne);
+            }
 
-            int numeNum2 = parseNume(fracTwo);
-//            System.out.println(numeNum2);
+            if (fracTwo.contains("/")){
+                    wholeNum2 = parseWhole(fracTwo);
+                    numeNum2 = parseNume(fracTwo);
+                    denomNum2 = parseDenom(fracTwo);
+            } else {
+                    numeNum2 = Integer.parseInt(fracTwo);
+            }
 
-            int denomNum2 = parseDenom(fracTwo);
-//            System.out.println(denomNum2);
 
             if (sign.equals("+")){
                 String addFracs = add(wholeNum, numeNum, denomNum, wholeNum2, numeNum2, denomNum2);
@@ -80,75 +84,131 @@ public class fracCalc {
 
     }
     public static String add(int firstWhole, int firstNume, int firstDenom, int secondWhole, int secondNume, int secondDenom) {
-//        System.out.println("add");
+
         if (firstWhole != 0){
-            firstNume = ((firstWhole * firstDenom) + firstNume);
+            if (firstWhole < -1){
+                firstNume = ((Math.abs(firstWhole) * firstDenom) + firstNume);
+                firstNume = firstNume * -1;
+            } else {
+                firstNume = ((Math.abs(firstWhole) * firstDenom) + firstNume);
+            }
         }
         if (secondWhole != 0){
-            secondNume = ((secondWhole * secondDenom) + secondNume);
+            if (secondWhole < -1){
+                secondNume = ((Math.abs(secondWhole) * secondDenom) + secondNume);
+                secondNume = secondNume * -1;
+            } else {
+                secondNume = ((Math.abs(secondWhole) * secondDenom) + secondNume);
+            }
         }
         int finalNume = ((firstNume * secondDenom) + (firstDenom * secondNume));
         int finalDenom = (firstDenom * secondDenom);
-        if (finalNume % finalDenom == 0){
+        if (finalNume < 0 && finalDenom < 0){
+            finalNume = Math.abs(finalNume);
+            finalDenom = Math.abs(finalDenom);
+        }
+        if (finalNume % finalDenom == 0) {
             return (Integer.toString(finalNume / finalDenom));
-        } else {
-            return (finalNume + "/" + finalDenom);
+        }else {
+            return simplify(finalNume, finalDenom);
         }
 
     }
     public static String subtract(int firstWhole, int firstNume, int firstDenom, int secondWhole, int secondNume, int secondDenom) {
-//        System.out.println("subtract");
+
         if (firstWhole != 0){
-            firstNume = ((firstWhole * firstDenom) + firstNume);
+            if (firstWhole < -1){
+                firstNume = ((Math.abs(firstWhole) * firstDenom) + firstNume);
+                firstNume = firstNume * -1;
+            } else {
+                firstNume = ((Math.abs(firstWhole) * firstDenom) + firstNume);
+            }
         }
         if (secondWhole != 0){
-            secondNume = ((secondWhole * secondDenom) + secondNume);
+            if (secondWhole < -1){
+                secondNume = ((Math.abs(secondWhole) * secondDenom) + secondNume);
+                secondNume = secondNume * -1;
+            } else {
+                secondNume = ((Math.abs(secondWhole) * secondDenom) + secondNume);
+            }
         }
         int finalNume = ((firstNume * secondDenom) - (firstDenom * secondNume));
         int finalDenom = (firstDenom * secondDenom);
-        if (finalNume % finalDenom == 0){
+        if (finalNume < 0 && finalDenom < 0){
+            finalNume = Math.abs(finalNume);
+            finalDenom = Math.abs(finalDenom);
+        }
+        if (finalNume % finalDenom == 0) {
             return (Integer.toString(finalNume / finalDenom));
         } else {
-            return (finalNume + "/" + finalDenom);
+            return simplify(finalNume, finalDenom);
         }
     }
 
     public static String multiply(int firstWhole, int firstNume, int firstDenom, int secondWhole, int secondNume, int secondDenom) {
-//        System.out.println("multiply");
+
         if (firstWhole != 0){
-            firstNume = ((firstWhole * firstDenom) + firstNume);
+            if (firstWhole < -1){
+                firstNume = ((Math.abs(firstWhole) * firstDenom) + firstNume);
+                firstNume = firstNume * -1;
+            } else {
+                firstNume = ((Math.abs(firstWhole) * firstDenom) + firstNume);
+            }
         }
         if (secondWhole != 0){
-            secondNume = ((secondWhole * secondDenom) + secondNume);
+            if (secondWhole < -1){
+                secondNume = ((Math.abs(secondWhole) * secondDenom) + secondNume);
+                secondNume = secondNume * -1;
+            } else {
+                secondNume = ((Math.abs(secondWhole) * secondDenom) + secondNume);
+            }
         }
         int finalNume = (firstNume * secondNume);
         int finalDenom = (firstDenom * secondDenom);
-        if (finalNume % finalDenom == 0){
+        if (finalNume < 0 && finalDenom < 0){
+            finalNume = Math.abs(finalNume);
+            finalDenom = Math.abs(finalDenom);
+        }
+        if (finalNume % finalDenom == 0) {
             return (Integer.toString(finalNume / finalDenom));
         } else {
-            return (finalNume + "/" + finalDenom);
+            return simplify(finalNume, finalDenom);
         }
     }
 
     public static String divide(int firstWhole, int firstNume, int firstDenom, int secondWhole, int secondNume, int secondDenom) {
-//        System.out.println("divide");
+
         if (firstWhole != 0){
-            firstNume = ((firstWhole * firstDenom) + firstNume);
+            if (firstWhole < -1){
+                firstNume = ((Math.abs(firstWhole) * firstDenom) + firstNume);
+                firstNume = firstNume * -1;
+            } else {
+                firstNume = ((Math.abs(firstWhole) * firstDenom) + firstNume);
+            }
         }
         if (secondWhole != 0){
-            secondNume = ((secondWhole * secondDenom) + secondNume);
+            if (secondWhole < -1){
+                secondNume = ((Math.abs(secondWhole) * secondDenom) + secondNume);
+                secondNume = secondNume * -1;
+            } else {
+                secondNume = ((Math.abs(secondWhole) * secondDenom) + secondNume);
+            }
         }
         int finalNume = (firstNume * secondDenom);
         int finalDenom = (firstDenom * secondNume);
+        if (finalNume < 0 && finalDenom < 0){
+            finalNume = Math.abs(finalNume);
+            finalDenom = Math.abs(finalDenom);
+        }
         if (finalNume % finalDenom == 0){
             return (Integer.toString(finalNume / finalDenom));
         } else {
-            return (finalNume + "/" + finalDenom);
+            return simplify(finalNume, finalDenom);
         }
     }
 
     public static int parseWhole(final String fraction) {
-//        System.out.println("parseWhole");
+
         int wholeNum = 0;
         Character testChar;
         for (int i = 0; i < fraction.length(); i++){
@@ -161,7 +221,7 @@ public class fracCalc {
     }
 
     public static int parseNume(final String fraction) {
-//        System.out.println("parseNume");
+
         int numeNum = 0;
         Character testChar;
         for (int i = 0; i < fraction.length(); i++){
@@ -173,7 +233,7 @@ public class fracCalc {
                         numeNum = Integer.parseInt(fraction.substring((fraction.indexOf('_') + 1), i));
                     }
                 }
-            } else{
+            } else {
                 if (testChar == '/') {
                     numeNum = Integer.parseInt(fraction.substring(0, i));
                 }
@@ -183,7 +243,7 @@ public class fracCalc {
     }
 
     public static int parseDenom(final String fraction) {
-//        System.out.println("parseDenom");
+
         int denomNum = 1;
         Character testChar;
         for (int i = 0; i < fraction.length(); i++){
@@ -195,12 +255,53 @@ public class fracCalc {
                         denomNum = Integer.parseInt(fraction.substring((fraction.indexOf(testChar) + 1)));
                     }
                 }
-            } else{
+            } else {
                 if (testChar == '/') {
                     denomNum = Integer.parseInt(fraction.substring((fraction.indexOf(testChar) + 1)));
                 }
             }
         }
         return denomNum;
+    }
+
+    public static String simplify(int nume, int denom){
+
+        int wholeNum = 0;
+        if (Math.abs(nume) > Math.abs(denom)){ //Reduces improper to proper fraction.
+            wholeNum = (nume / denom);
+            nume = ((nume % denom));
+        }
+        int gcd = gcd(nume, denom); //Gets greatest common divisor
+        nume = nume / gcd; //reduces nume
+        denom = denom / gcd; //reduces denom
+
+        if (wholeNum == 0){
+            return (nume + "/" + denom);
+        } else {
+            if (wholeNum < 0){
+                nume = Math.abs(nume);
+                denom = Math.abs(denom);
+                return (wholeNum + "_" + nume + "/" + denom);
+            } else {
+                return (wholeNum + "_" + nume + "/" + denom);
+            }
+        }
+    }
+
+    public static int gcd(int nume, int denom){ //Finds greatest common divisor
+
+        nume = Math.abs(nume);
+        denom = Math.abs(denom);
+        if (nume == 0)
+            return denom;
+        if (denom == 0)
+            return nume;
+
+        if (nume == denom)
+            return nume;
+
+        if (nume > denom)
+            return gcd(nume - denom, denom);
+        return gcd(nume, denom - nume);
     }
 }
